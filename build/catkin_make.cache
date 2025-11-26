@@ -1,0 +1,2 @@
+gazebo_map
+-DCATKIN_DEVEL_PREFIX=/home/liu/ai_community/devel -DCMAKE_INSTALL_PREFIX=/home/liu/ai_community/install -G Unix Makefiles

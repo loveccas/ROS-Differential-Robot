@@ -1,0 +1,18 @@
+<launch>
+    <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name" value="$(find gazebo_map)/world/ai-community.world"/>  <!-- 世界文件路径 -->
+    <arg name="paused" value="false"/>  <!-- 启动后是否暂停仿真 -->
+    <arg name="use_sim_time" value="true"/>  <!-- 使用仿真时间 -->
+    </include>
+
+    <include file="$(find gazebo_map)/launch/navigation.launch"></include>
+
+    <param name="robot_description" command="$(find xacro)/xacro '$(find gazebo_map)/urdf/ai-robot.urdf'"/>
+
+    <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-urdf -model ai-robot -param robot_description -x 0 -y 0 -z 0"/>
+
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"/>
+    <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher"/>
+    
+    <node name="camera_node" pkg="gazebo_map" type="camera_node.py" output="screen"/>
+</launch>

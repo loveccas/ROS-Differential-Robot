@@ -1,0 +1,10 @@
+global_costmap:
+  global_frame: map # 全局坐标系（与地图一致）
+  robot_base_frame: base_link # 机器人底座坐标系
+  update_frequency: 1.0 # 更新频率（1Hz，全局规划无需高频）
+  publish_frequency: 1.0 # 可视化发布频率
+  static_map: true # 使用静态地图（SLAM生成的地图）
+  rolling_window: false # 不滚动（全局地图固定）
+  transform_tolerance: 0.5 # TF变换容忍时间（秒）
+  width: 40.0 # 增大地图宽度（单位：米）
+  height: 40.0 # 增大地图高度（单位：米）

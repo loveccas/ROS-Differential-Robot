@@ -1,0 +1,13 @@
+robot_radius: 0.1
+footprint: [[-0.15, -0.15], [-0.15, 0.15], [0.15, 0.15], [0.15, -0.15]] # 可选：矩形轮廓
+
+observation_sources: laser_scan # 传感器名称
+laser_scan:
+  sensor_frame: laser_link # 传感器坐标系
+  data_type: LaserScan # 数据类型
+  topic: /scan # 激光雷达话题
+  marking: true # 用激光标记障碍物
+  clearing: true # 用激光清除已消失的障碍物
+
+inflation_radius: 0.05 # 膨胀半径（米）
+cost_scaling_factor: 5.0 # 膨胀代价衰减系数

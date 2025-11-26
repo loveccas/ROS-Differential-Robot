@@ -1,0 +1,22 @@
+DWAPlannerROS:
+  # 速度限制（需与机器人性能匹配）
+  max_vel_x: 0.5 # 最大线速度（米/秒）
+  min_vel_x: 0.0 # 最小线速度
+  max_vel_y: 0.1 # 差速机器人Y向速度为0
+  max_vel_theta: 0.5 # 最大角速度（弧度/秒）
+  min_vel_theta: -0.5
+  min_in_place_vel_theta: 2 # 原地旋转最小角速度
+
+  # 加速度限制
+  acc_lim_x: 0.3 # X向加速度（米/秒²）
+  acc_lim_y: 0.0
+  acc_lim_theta: 0.5 # 角加速度（弧度/秒²）
+
+  # 路径评估参数（影响避障行为）
+  sim_time: 1.5 # 轨迹模拟时间（秒）
+  vx_samples: 30 # X向速度采样数
+  vy_samples: 1 # Y向采样数（差速机器人为1）
+  vtheta_samples: 30 # 角速度采样数
+  path_distance_bias: 32.0 # 路径跟踪权重（越大越贴路径）
+  goal_distance_bias: 24.0 # 目标点权重
+  occdist_scale: 0.01 # 障碍物距离权重（越大越避障）

@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rviz>
+<visualization_manager name="Visualization Manager" config_ok="true" level="0" hide_overlay="false" min_dist="0.01" max_dist="100000" target_frame="map" fixed_frame="map" frame_rate="30" show_axes="false" show_grid="true" grid_size="10" grid_alpha="0.3" grid_color="160; 160; 160" grid_style="lines" ground_plane_color="48; 48; 48" robot_model_color="128; 128; 128" background_color="0; 0; 0" default_light="true" ambient_light="0.5; 0.5; 0.5" directional_light="0.8; 0.8; 0.8" directional_light_x="0.0" directional_light_y="0.0" directional_light_z="1.0" />
+<tools>
+<tool name="Interact" type="rviz::InteractTool" />
+<tool name="Move Camera" type="rviz::MoveCameraTool" />
+<tool name="Select" type="rviz::SelectTool" />
+<tool name="2D Nav Goal" type="rviz::NavigateGoalTool" />
+<tool name="2D Pose Estimate" type="rviz::PoseEstimateTool" />
+<tool name="Publish Point" type="rviz::PublishPointTool" />
+</tools>
+
+<!-- 1. 显示地图（核心） -->
+<display name="Map" type="rviz::MapDisplay" enabled="true">
+<topic>/map</topic>
+<color_scheme>map</color_scheme>
+<alpha>0.9</alpha>
+<draw_background>true</draw_background>
+<draw_border>true</draw_border>
+<border_alpha>0.5</border_alpha>
+<border_color>255; 255; 255</border_color>
+<border_size>0.1</border_size>
+</display>
+
+<!-- 2. 显示激光雷达数据 -->
+<display name="LaserScan" type="rviz::LaserScanDisplay" enabled="true">
+<topic>/scan</topic>
+<frame>laser_link</frame>
+<color>255; 0; 0</color>
+<color_transform>intensity</color_transform>
+<min_intensity>0.0</min_intensity>
+<max_intensity>100.0</max_intensity>
+<point_size>0.05</point_size>
+<alpha>0.8</alpha>
+<max_range>5.0</max_range>
+<min_range>0.1</min_range>
+</display>
+
+<!-- 3. 显示机器人模型 -->
+<display name="RobotModel" type="rviz::RobotModelDisplay" enabled="true">
+<robot_description>robot_description</robot_description>
+<update_rate>10.0</update_rate>
+<alpha>1.0</alpha>
+<show_visual>true</show_visual>
+<show_collision>false</show_collision>
+<show_axes>false</show_axes>
+<use_fixed_frame>false</use_fixed_frame>
+</display>
+
+<!-- 4. 显示TF变换树 -->
+<display name="TF" type="rviz::TFDisplay" enabled="true">
+<frame_prefix></frame_prefix>
+<show_names>true</show_names>
+<show_axes>true</show_axes>
+<show_arrows>true</show_arrows>
+<axis_scale>0.2</axis_scale>
+<arrow_scale>0.3</arrow_scale>
+<update_rate>10.0</update_rate>
+<frame_timeout>10.0</frame_timeout>
+<!-- 仅显示关键帧，减少视觉杂乱 -->
+<frames>
+<frame>map</frame>
+<frame>odom</frame>
+<frame>base_link</frame>
+<frame>laser_link</frame>
+<frame>camera_link</frame>
+</frames>
+</display>
+
+<!-- 5. 显示里程计数据 -->
+<display name="Odometry" type="rviz::OdometryDisplay" enabled="true">
+<topic>/odom</topic>
+<frame>odom</frame>
+<color>0; 255; 0</color>
+<alpha>0.7</alpha>
+<line_width>0.05</line_width>
+<point_size>0.1</point_size>
+<keep>100</keep>
+<publish_tf>false</publish_tf>
+</display>
+
+<!-- 6. 显示网格（辅助定位） -->
+<display name="Grid" type="rviz::GridDisplay" enabled="true">
+<frame>map</frame>
+<cell_size>1.0</cell_size>
+<cell_count>10</cell_count>
+<color>160; 160; 160</color>
+<alpha>0.3</alpha>
+<plane>z</plane>
+<height>0.0</height>
+</display>
+
+<!-- 7. 显示相机图像（可选） -->
+<display name="Image" type="rviz::ImageDisplay" enabled="false">
+<topic>/image_raw</topic>
+<image_topic>/image_raw</image_topic>
+<transport_hints>raw</transport_hints>
+<alpha>1.0</alpha>
+<zoom>1.0</zoom>
+<show_fps>false</show_fps>
+</display>
+
+<!-- 8. 显示粒子云（GMapping位姿估计，可选） -->
+<display name="ParticleCloud" type="rviz::PointCloud2Display" enabled="false">
+<topic>/particlecloud</topic>
+<frame>map</frame>
+<color>255; 255; 0</color>
+<color_transform>flat</color_transform>
+<point_size>0.05</point_size>
+<alpha>0.5</alpha>
+</display>
+</rviz>

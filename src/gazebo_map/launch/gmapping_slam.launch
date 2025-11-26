@@ -1,0 +1,43 @@
+<launch>
+  <node pkg="gmapping" type="slam_gmapping" name="slam_gmapping" output="screen">
+    <param name="scan" value="/scan"/>  <!-- 激光雷达话题 -->
+    <param name="base_frame" value="base_link"/>  <!-- 机器人底座坐标系 -->
+    <param name="odom_frame" value="odom"/>  <!-- 里程计坐标系 -->
+    <param name="map_frame" value="map"/>  <!-- 地图坐标系 -->
+
+    <!-- 建图参数（可根据场景调整） -->
+    <param name="map_update_interval" value="5.0"/>  <!-- 地图更新间隔（秒） -->
+    <param name="maxUrange" value="5.0"/>  <!-- 激光最大有效距离（与雷达一致） -->
+    <param name="sigma" value="0.05"/>  <!-- 激光数据噪声标准差 -->
+    <param name="kernelSize" value="1"/>  <!-- 平滑核大小 -->
+    <param name="lstep" value="0.05"/>  <!-- 平移优化步长 -->
+    <param name="astep" value="0.05"/>  <!-- 旋转优化步长 -->
+    <param name="iterations" value="5"/>  <!-- 迭代次数 -->
+    <param name="lsigma" value="0.075"/>  <!-- 激光匹配噪声 -->
+    <param name="ogain" value="3.0"/>  <!-- 里程计权重 -->
+    <param name="lskip" value="0"/>  <!-- 激光数据下采样间隔（0=不采样） -->
+    <param name="srr" value="0.1"/>  <!-- 平移误差比例 -->
+    <param name="srt" value="0.2"/>  <!-- 平移-旋转误差比例 -->
+    <param name="str" value="0.1"/>  <!-- 旋转-平移误差比例 -->
+    <param name="stt" value="0.2"/>  <!-- 旋转误差比例 -->
+    <param name="linearUpdate" value="0.5"/>  <!-- 平移超过此值时更新地图（米） -->
+    <param name="angularUpdate" value="0.4"/>  <!-- 旋转超过此值时更新地图（弧度） -->
+    <param name="temporalUpdate" value="-1.0"/>  <!-- 时间间隔更新（-1=禁用） -->
+    <param name="resolution" value="0.05"/>  <!-- 地图分辨率（米/像素） -->
+    <param name="width" value="10.0"/>  <!-- 地图初始宽度（米） -->
+    <param name="height" value="10.0"/>  <!-- 地图初始高度（米） -->
+    <param name="delta" value="0.05"/>  <!-- 地图细胞更新阈值 -->
+    <param name="xmin" value="-5.0"/>  <!-- 地图初始X最小值（米） -->
+    <param name="ymin" value="-5.0"/>  <!-- 地图初始Y最小值（米） -->
+    <param name="xmax" value="5.0"/>  <!-- 地图初始X最大值（米） -->
+    <param name="ymax" value="5.0"/>  <!-- 地图初始Y最大值（米） -->
+    <param name="particles" value="30"/>  <!-- 粒子数量（影响精度和性能） -->
+    <param name="seed" value="0"/>  <!-- 随机数种子（0=系统时间） -->
+    <param name="llsamplerange" value="0.01"/>  <!-- 线性采样范围 -->
+    <param name="llsamplestep" value="0.01"/>  <!-- 线性采样步长 -->
+    <param name="lasamplerange" value="0.005"/>  <!-- 角度采样范围 -->
+    <param name="lasamplestep" value="0.005"/>  <!-- 角度采样步长 -->
+  </node>
+
+  <!-- <node pkg="rviz" type="rviz" name="rviz" args="-d $(find gazebo_map)/config/slam_rviz.rviz"/>  可选：指定RViz配置文件 -->
+</launch>

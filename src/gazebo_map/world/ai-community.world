@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<sdf version="1.6">
+  <world name="default">
+    <!-- 光源设置 -->
+    <include>
+      <uri>model://sun</uri>
+    </include>
+
+    <!-- 地面平面 -->
+    <include>
+      <uri>model://ground_plane</uri>
+    </include>
+
+    <!-- 汽车 -->
+    <include>
+      <uri>model://cp</uri>
+    </include>
+
+    <include>
+      <uri>model://ro1</uri>
+    </include>
+
+    <include>
+      <uri>model://ro2</uri>
+    </include>
+
+    <include>
+      <uri>model://last</uri>
+    </include>
+    <!-- 立牌 -->
+    
+  </world>
+
+</sdf>
